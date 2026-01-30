@@ -18,16 +18,11 @@ body {
     border: 1px solid darkgrey;
     display: flex;
     flex-wrap: wrap;
-
 }
 
 #canvas > div {
     width: 10px;
     height: 10px;
-}
-
-#canvas > div:hover {
-    background-color: blue;
 }
 
 #note {
