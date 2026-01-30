@@ -3,6 +3,7 @@ const DIV_SIZE = 10; // 10px
 // create html handles
 const canvas = document.querySelector("#canvas");
 const sizeButton = document.querySelector("#size-button");
+const clearButton = document.querySelector("#clear-button");
 
 // create a default 16x16 canvas
 createCanvas(canvas);
@@ -64,4 +65,12 @@ function randColor() {
     const green = rand255();
     const blue = rand255();
     return `rgb(${red}, ${green}, ${blue})`;    // return "rgb(red, green, blue)"
-} 
+}
+
+// clear button event handler
+clearButton.addEventListener("click", () => {
+    const canvasBlocks = canvas.querySelectorAll("div");
+    for (const block of canvasBlocks) {
+        block.style.backgroundColor = "";
+    }
+});
