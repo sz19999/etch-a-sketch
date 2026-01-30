@@ -15,12 +15,10 @@ body {
 }
 
 #sub-heading {
-    width: 60%;
     margin-bottom: 8px;
 }
 
 ul {
-    width: 60%;
     margin-bottom: 8px;
     padding-left: 32px;
 }
@@ -38,7 +36,6 @@ ul {
 
 #note {
     margin-bottom: 16px;
-    width: 60%;
 }
 
 #size-button {
