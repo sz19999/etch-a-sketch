@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#heading {
+    margin-bottom: 8px;
+}
+
+#canvas {
+    border: 1px solid darkgrey;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#canvas > div {
+    width: 10px;
+    height: 10px;
+}
+
+#canvas > div:hover {
+    background-color: blue;
+}
+
+#note {
+    margin-bottom: 16px;
+}
+
+#size-button {
+    margin-bottom: 16px;
+}
