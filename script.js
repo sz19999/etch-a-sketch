@@ -8,6 +8,11 @@ const clearButton = document.querySelector("#clear-button");
 // create a default 16x16 canvas
 createCanvas(canvas);
 
+// track mouse hold globally
+let isMouseDown = false;
+document.addEventListener("mousedown", () => isMouseDown = true);
+document.addEventListener("mouseup", () => isMouseDown = false);
+
 // size button event handler
 sizeButton.addEventListener("click", () => {
     // delete old canvas first
@@ -36,7 +41,12 @@ function createCanvas(parentElement, sideLength = 16) {
     for (let i = 0; i < sideLength; i++) {
         for (let j = 0; j < sideLength; j++) {
             const div = document.createElement("div");
-            div.addEventListener("mouseenter", divHover);
+            div.addEventListener("mouseover", divHover);    // allow color a few blocks by holding mouse
+            div.addEventListener("mousedown", (e) => {       // single block coloring by clicking once
+                e.target.style.backgroundColor = randColor();
+                e.target.style.opacity = (e.target.style.opacity == "") ? 
+                    "0.1" : `${+e.target.style.opacity + 0.1}`;
+            });
             parentElement.appendChild(div);
         }
 }
@@ -46,12 +56,14 @@ parentElement.style.height = `${sideLength * DIV_SIZE}px`;
 
 // div mouse hover logic
 function divHover(event) {
-    // choose a random rgb() color for the hovered div
-    event.target.style.backgroundColor = randColor();
+    if (isMouseDown) {
+        // choose a random rgb() color for the hovered div
+        event.target.style.backgroundColor = randColor();
 
-    // each div hover darkens the div by 10%, until full colored
-    event.target.style.opacity = (event.target.style.opacity == "") ? 
-        "0.1" : `${+event.target.style.opacity + 0.1}`;
+        // each div hover darkens the div by 10%, until full colored
+        event.target.style.opacity = (event.target.style.opacity == "") ? 
+            "0.1" : `${+event.target.style.opacity + 0.1}`;
+    }
 }
 
 // generate a random number from 0 to 255
